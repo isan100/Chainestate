@@ -1,0 +1,75 @@
+#![cfg_attr(not(feature = "std"), no_std, no_main)]
+
+#[ink::contract]
+mod property_ownership {
+
+    use ink::env::call::FromAccountId;
+
+    #[ink(storage)]
+    pub struct PropertyOwnership {
+        seller: AccountId,
+        buyer: Option<AccountId>,
+        property_price: Balance,
+        amount_paid: Balance,
+        ownership_transferred: bool,
+    }
+
+    impl PropertyOwnership {
+
+        #[ink(constructor)]
+        pub fn new(seller: AccountId, price: Balance) -> Self {
+            Self {
+                seller,
+                buyer: None,
+                property_price: price,
+                amount_paid: 0,
+                ownership_transferred: false,
+            }
+        }
+
+        #[ink(message)]
+        pub fn register_buyer(&mut self, buyer: AccountId) {
+            assert!(self.buyer.is_none(), "Buyer already set");
+            self.buyer = Some(buyer);
+        }
+
+        #[ink(message, payable)]
+        pub fn pay_installment(&mut self) {
+            let caller = self.env().caller();
+
+            assert!(self.buyer == Some(caller), "Not buyer");
+            assert!(!self.ownership_transferred, "Ownership already transferred");
+
+            let payment = self.env().transferred_value();
+
+            self.amount_paid += payment;
+
+            if self.amount_paid >= self.property_price {
+                self.transfer_ownership();
+            }
+        }
+
+        fn transfer_ownership(&mut self) {
+            assert!(self.amount_paid >= self.property_price, "Payment incomplete");
+
+            self.ownership_transferred = true;
+
+            let balance = self.env().balance();
+
+            self.env()
+                .transfer(self.seller, balance)
+                .expect("Transfer failed");
+        }
+
+        #[ink(message)]
+        pub fn get_details(&self) -> (AccountId, Option<AccountId>, Balance, Balance, bool) {
+            (
+                self.seller,
+                self.buyer,
+                self.property_price,
+                self.amount_paid,
+                self.ownership_transferred,
+            )
+        }
+    }
+}

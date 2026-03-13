@@ -1,61 +1,78 @@
-**The Problem**
+# ChainEstate
 
-Real estate ownership poses challenges for buyers due to high property prices, cumbersome paper-based title systems, and lack of transparency in property ownership records.
+## The Problem
 
-**The Solution **
+Real estate ownership poses challenges for buyers due to high property
+prices, cumbersome paper-based title systems, and lack of transparency
+in property ownership records.
 
-ChainEstate uses blockchain technology to tokenize real estate and enable people to purchase property gradually while securely recording and automatically transferring ownership through smart contracts on the Polkadot Ecosystem.
+## The Solution
 
-**Project Benefits**
+ChainEstate uses blockchain technology to tokenize real estate and
+enable people to purchase property gradually while securely recording
+and automatically transferring ownership through smart contracts on the
+Polkadot ecosystem.
 
-Increased Property Affordability. Tokenization allows people to buy property in smaller portions or installments, making real estate accessible to more buyers.
+## Project Benefits
 
-Transparent Ownership Records. Property ownership is recorded on the blockchain, making records public, verifiable, and tamper-proof.
+### Increased Property Affordability
 
-Fraud Prevention. Blockchain eliminates fake land titles and duplicate ownership records, a common issue in paper-based land registries.
+Tokenization allows people to buy property in smaller portions or
+installments, making real estate accessible to more buyers.
 
-Automated Ownership Transfer. Using smart contracts, ownership is automatically transferred when payment conditions are fulfilled.
+### Transparent Ownership Records
 
-Faster Property Transactions. Blockchain-based verification removes bureaucratic delays typically involved in land registry processes.
+Property ownership is recorded on the blockchain, making records public,
+verifiable, and tamper-proof.
 
-Secure Digital Title Deeds. Properties can be issued as blockchain-based digital titles (NFTs), which are easier to manage and verify.
+### Fraud Prevention
 
-Fractional Investment Opportunities. Investors can own shares of high-value commercial or residential properties, opening new investment opportunities.
+Blockchain eliminates fake land titles and duplicate ownership records,
+a common issue in paper-based land registries.
 
-Global Access to Real Estate Markets. Anyone with a Web3 wallet can participate in property ownership without geographical barriers.
+### Automated Ownership Transfer
 
-**Project Workflow**
+Using smart contracts, ownership is automatically transferred when
+payment conditions are fulfilled.
 
-Property Registration
+### Faster Property Transactions
 
-Tokenization
+Blockchain-based verification removes bureaucratic delays typically
+involved in land registry processes.
 
-Property Listing
+### Secure Digital Title Deeds
 
-Installment Purchase
+Properties can be issued as blockchain-based digital titles (NFTs),
+which are easier to manage and verify.
 
-Smart Contract Escrow
+### Fractional Investment Opportunities
 
-Completion of Payment
+Investors can own shares of high-value commercial or residential
+properties, opening new investment opportunities.
 
-Property Ownership
+### Global Access to Real Estate Markets
 
-**Project Tech Stack**
+Anyone with a Web3 wallet can participate in property ownership without
+geographical barriers.
 
-Polkadot Ecosystem as the secure decentralized ledger
+## Project Workflow
 
-Solidity smart contracts for property ownership
+1.  Property Registration
+2.  Tokenization
+3.  Property Listing
+4.  Installment Purchase
+5.  Smart Contract Escrow
+6.  Completion of Payment
+7.  Property Ownership
 
-Moonbeam Parachain to run solidity contracts on Polkadot
+## Project Tech Stack
 
-React for Frontend Web3 user interface
-
-Node.js for Backend APIs and property verification
-
-MetaMask or Polkadot.js wallet to sign transactions
-
-IFPS to store property documents
-
-Graph Indexing to query blockchain data
-
-Next.js as User Interface framework for web application
+-   Polkadot Ecosystem -- Secure decentralized ledger
+-   Solidity -- Smart contracts for property ownership logic
+-   Moonbeam Parachain -- Runs Solidity contracts on Polkadot
+-   React -- Web3 frontend user interface
+-   Node.js -- Backend APIs and property verification
+-   MetaMask / Polkadot.js -- Wallets for signing transactions
+-   IPFS -- Decentralized storage for property documents
+-   The Graph -- Blockchain indexing and querying
+-   Next.js -- Web application framework

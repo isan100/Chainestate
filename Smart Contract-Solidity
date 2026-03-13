@@ -1,0 +1,47 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract PropertyOwnership {
+
+    address public seller;
+    address public buyer;
+
+    uint public propertyPrice;
+    uint public amountPaid;
+
+    bool public ownershipTransferred;
+
+    constructor(address _seller, uint _price) {
+        seller = _seller;
+        propertyPrice = _price;
+    }
+
+    modifier onlyBuyer() {
+        require(msg.sender == buyer, "Not buyer");
+        _;
+    }
+
+    function registerBuyer(address _buyer) public {
+        require(buyer == address(0), "Buyer already set");
+        buyer = _buyer;
+    }
+
+    function payInstallment() public payable onlyBuyer {
+        require(!ownershipTransferred, "Ownership already transferred");
+
+        amountPaid += msg.value;
+
+        if(amountPaid >= propertyPrice) {
+            transferOwnership();
+        }
+    }
+
+    function transferOwnership() internal {
+        require(amountPaid >= propertyPrice, "Payment incomplete");
+
+        ownershipTransferred = true;
+
+        payable(seller).transfer(address(this).balance);
+    }
+
+}
